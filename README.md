@@ -85,40 +85,24 @@ npm run preview
 
 ### 部署到 GitHub Pages
 
-#### ⚠️ 重要：部署前配置
-
-1. **修改仓库名称配置**
-   
-   打开 `vite.config.ts`，找到第 13 行，修改为你的 GitHub 仓库名：
-   ```typescript
-   const GITHUB_REPO_NAME = 'your-repo-name'; // 修改这里
-   ```
-
-2. **安装 gh-pages**
+1. 安装 `gh-pages` 包：
    ```bash
    npm install --save-dev gh-pages
    ```
 
-3. **一键部署**
+2. 在 `package.json` 中添加部署脚本：
+   ```json
+   {
+     "scripts": {
+       "deploy": "npm run build && gh-pages -d dist"
+     }
+   }
+   ```
+
+3. 运行部署：
    ```bash
    npm run deploy
    ```
-   
-   或者使用 PowerShell 脚本：
-   ```powershell
-   .\deploy.ps1
-   ```
-
-4. **访问你的网站**
-   
-   部署完成后，访问：`https://your-username.github.io/your-repo-name/`
-   
-   测试路由：
-   - `https://your-username.github.io/your-repo-name/#showcase`
-   - `https://your-username.github.io/your-repo-name/#benchmarks`
-   - `https://your-username.github.io/your-repo-name/#tasks`
-
-> 📖 详细部署指南请查看 [GITHUB_PAGES_SETUP.md](GITHUB_PAGES_SETUP.md)
 
 ## 🛠️ 技术栈
 
@@ -211,4 +195,3 @@ github_deploy/
 <div align="center">
 Made with ❤️ by TerraSense Team
 </div>
-
