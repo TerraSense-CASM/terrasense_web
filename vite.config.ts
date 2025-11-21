@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
-      // GitHub Pages 部署路径（仓库名：terrasense）
+      // GitHub Pages 部署配置
       base: '/terrasense/',
       server: {
         port: 3000,
