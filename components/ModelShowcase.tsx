@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Icons } from './Icons';
 import { ChatMessage } from '../types';
-import ContextSample from '../微信图片_20251203183425_139_156.jpg';
+import ContextSample from '../demo.jpg';
 
 const exampleImages = [
   {
