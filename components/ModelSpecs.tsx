@@ -4,32 +4,31 @@ import { Icons } from './Icons';
 
 const taskCategories: TaskCategory[] = [
   {
-    title: "Fine-grained Object Perception",
+    title: "Unified Perception & Cognition",
     tasks: [
-      "Task 1: Oriented Object Detection",
-      "Task 2: Axis-aligned Object Detection"
+      "Object detection, captioning, and VQA in one model",
+      "Supports single- and multi-image instructions"
     ]
   },
   {
-    title: "Scene Understanding & Description",
+    title: "Geospatial Intelligence",
     tasks: [
-      "Task 3: Remote Sensing Image Captioning",
-      "Task 4: Land Use/Cover Classification"
+      "Understands coordinates and relative positions",
+      "Handles dense object clusters in overhead views"
     ]
   },
   {
-    title: "Complex Reasoning & VQA",
+    title: "Temporal Change Reasoning",
     tasks: [
-      "Task 5: Object Counting",
-      "Task 6: Spatial Relationship Reasoning",
-      "Task 7: Region Specific QA"
+      "Bi-temporal change detection with paired images",
+      "Describes locations and categories of changes"
     ]
   },
   {
-    title: "Temporal Analysis / Change Detection",
+    title: "Comprehensive Task Spectrum",
     tasks: [
-      "Task 8: Change Detection QA",
-      "Task 9: Change Description"
+      "Integrates diverse tasks from rotated object detection to dense object counting.",
+      "Unifies land cover classification, fine-grained grounding, and region-specific QA."
     ]
   }
 ];
@@ -46,11 +45,10 @@ export const ModelSpecs: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            All-In-One <span className="text-brand-DEFAULT">Remote Sensing</span> Model
+            All-In-One <span className="text-brand-DEFAULT">Remote Sensing</span> Foundation
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            TerraSense-Base unifies diverse remote sensing tasks into a single foundation model, 
-            supporting multi-image inputs and complex instruction following.
+            TerraSense-Base unifies detection, captioning, VQA, and change detection into a single multimodal model, trained on the TS-Instruct corpus derived from 21 public remote sensing datasets.
           </p>
         </div>
 
@@ -79,22 +77,21 @@ export const ModelSpecs: React.FC = () => {
         <div className="mt-16 p-1 rounded-2xl bg-gradient-to-r from-slate-800 to-slate-700">
           <div className="bg-space-900 rounded-xl px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-8">
              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white mb-2">8-Billion Parameters</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">8B-Parameter Multimodal Backbone</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">
-                  Built on a robust transformer architecture, TerraSense-Base is optimized for both 
+                  Built on a robust transformer architecture, TerraSense-Base is optimized for 
                   <span className="text-brand-DEFAULT"> visual-language alignment</span> and 
-                  <span className="text-brand-DEFAULT"> pixel-level localization</span>.
-                  It serves as the perfect backbone for autonomous GIS Agents.
+                  <span className="text-brand-DEFAULT"> geospatial reasoning</span>, serving as a strong backbone for remote sensing and GIS agents.
                 </p>
              </div>
              <div className="flex gap-8">
                 <div className="text-center">
-                   <div className="text-3xl font-bold text-white font-mono">3,719</div>
-                   <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Training Samples</div>
+                   <div className="text-3xl font-bold text-white font-mono">300k+</div>
+                   <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">TS-Instruct Instructions</div>
                 </div>
                 <div className="text-center">
-                   <div className="text-3xl font-bold text-brand-glow font-mono">SOTA</div>
-                   <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Performance</div>
+                   <div className="text-3xl font-bold text-brand-glow font-mono">21</div>
+                   <div className="text-xs text-slate-500 uppercase tracking-wider mt-1">Public RS Datasets</div>
                 </div>
              </div>
           </div>

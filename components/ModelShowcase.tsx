@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Icons } from './Icons';
 import { ChatMessage } from '../types';
+import ContextSample from '../微信图片_20251203183425_139_156.jpg';
 
 const exampleImages = [
   {
@@ -24,12 +25,30 @@ const exampleImages = [
 ];
 
 const chatSequence: ChatMessage[] = [
-  { id: 1, role: 'user', text: '<image> From a remote sensing perspective, how is the overall land cover pattern in this image? Briefly describe main feature types.', delay: 500 },
-  { id: 2, role: 'model', text: 'Dense urban built-up area. The center features a train station and railway lines, surrounded by dense residential and industrial buildings with sparse green spaces, presenting a typical metropolitan texture.', delay: 2500 },
-  { id: 3, role: 'user', text: 'Analyzing from an object detection perspective, what category does the object identified by the oriented bounding box at [455,321,533,321,533,721,455,721] belong to?', delay: 6500 },
-  { id: 4, role: 'model', text: 'Train Station', delay: 8500 },
+  {
+    id: 1,
+    role: 'user',
+    text:
+      '<image> From the perspective of remote sensing image interpretation, what is the overall land cover pattern presented in this image? Please briefly describe it, incorporating the main types of ground features and their spatial distribution characteristics.',
+    delay: 500,
+  },
+  {
+    id: 2,
+    role: 'model',
+    text:
+      'A dense urban built-up area. The center features a train station and railway lines, surrounded by dense residential and industrial buildings with a small amount of green space interspersed, presenting a typical urban texture.',
+    delay: 2500,
+  },
+  {
+    id: 3,
+    role: 'user',
+    text:
+      'Analyzed from the perspective of remote sensing object detection, what category does the object identified by the oriented bounding box at coordinates [455,321,533,321,533,721,455,721] belong to?',
+    delay: 6500,
+  },
+  { id: 4, role: 'model', text: 'Train station.', delay: 8500 },
   { id: 5, role: 'user', text: 'What percentage of the image area is occupied by the train station?', delay: 10500 },
-  { id: 6, role: 'model', text: '4.9%', delay: 12000 }
+  { id: 6, role: 'model', text: '4.9%', delay: 12000 },
 ];
 
 export const ModelShowcase: React.FC = () => {
@@ -91,100 +110,132 @@ export const ModelShowcase: React.FC = () => {
           <div className="inline-block p-2 rounded-full bg-brand-accent/10 text-brand-accent mb-4">
             <Icons.Layers className="w-6 h-6" />
           </div>
-          <h2 className="text-4xl font-bold mb-4">Academic Benchmarks & Capabilities</h2>
-          <p className="text-slate-400">
-            Demonstrating State-of-the-Art performance in multi-modal remote sensing tasks.
+          <h2 className="text-4xl font-bold mb-4">TerraSense Capabilities & Example</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Showcasing <span className="font-semibold text-white">TerraSense-Base</span> on representative remote sensing tasks, including object detection, land-cover segmentation, scene classification, VQA, and bi-temporal change detection.
           </p>
         </div>
 
-        {/* FEATURE 1: VISUAL CAROUSEL & BENCHMARKS */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24" id="benchmarks">
-          
-          {/* Left: Image Carousel */}
-          <div className="bg-space-800 rounded-2xl p-2 border border-slate-700 shadow-2xl overflow-hidden relative group">
-            <div className="absolute top-4 left-4 z-10 bg-black/70 backdrop-blur px-3 py-1 rounded border border-white/10 text-xs font-mono text-white">
-              MODEL_OUTPUT_VISUALIZATION
+        {/* FEATURE 1: TS-Instruct DETECTION TABLES */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24" id="Example">
+          {/* Left: 2D bounding box detection */}
+          <div className="bg-space-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+            <div className="px-5 pt-4 pb-3 border-b border-slate-700">
+              <div className="text-xs font-mono uppercase tracking-wide text-brand-DEFAULT">TS-Instruct – 2D Detection</div>
+              <p className="text-xs text-slate-400 mt-1">
+                Result of baseline models on the test set of 2D object detection. Mean IoU is averaged over all TS-Instruct test samples.
+              </p>
             </div>
-            <div className="relative h-[400px] w-full rounded-xl overflow-hidden bg-space-900">
-              {exampleImages.map((img, idx) => (
-                <div 
-                  key={img.id}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === activeImageIdx ? 'opacity-100' : 'opacity-0'}`}
-                >
-                  <img src={img.src} alt={img.label} className="w-full h-full object-cover opacity-80" />
-                  {/* Overlay UI Mockup */}
-                  <div className="absolute inset-0 border-[10px] border-brand-DEFAULT/10"></div>
-                  {/* Fake Bounding Boxes */}
-                  <div className="absolute top-1/4 left-1/4 w-24 h-24 border-2 border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)] animate-pulse">
-                    <span className="absolute -top-6 left-0 bg-red-500 text-black text-[10px] font-bold px-1">CONF: 0.98</span>
-                  </div>
-                  <div className="absolute bottom-1/3 right-1/4 w-32 h-16 border-2 border-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
-                  
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
-                     <div className="inline-block px-2 py-1 bg-brand-DEFAULT text-space-900 text-xs font-bold mb-2">{img.tag}</div>
-                     <h3 className="text-xl font-bold text-white">{img.label}</h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center gap-2 mt-4 pb-2">
-              {exampleImages.map((_, idx) => (
-                <button 
-                  key={idx}
-                  onClick={() => setActiveImageIdx(idx)}
-                  className={`h-1.5 rounded-full transition-all ${idx === activeImageIdx ? 'w-8 bg-brand-DEFAULT' : 'w-2 bg-slate-600'}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Benchmark Table */}
-          <div className="flex flex-col justify-center">
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Icons.Cpu className="w-6 h-6 text-brand-glow" />
-              Performance Comparison
-            </h3>
-            <div className="bg-space-800 rounded-xl border border-slate-700 overflow-hidden">
-              <table className="w-full text-sm text-left">
-                <thead className="text-xs text-slate-400 uppercase bg-space-900 border-b border-slate-700">
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs md:text-sm text-left">
+                <thead className="bg-space-900 text-[11px] md:text-xs text-slate-400 uppercase border-b border-slate-700">
                   <tr>
-                    <th className="px-6 py-4 font-medium">Metric</th>
-                    <th className="px-6 py-4 font-medium text-slate-500">Baseline</th>
-                    <th className="px-6 py-4 font-medium text-brand-DEFAULT bg-brand-DEFAULT/5">TerraSense</th>
-                    <th className="px-6 py-4 font-medium text-green-400">Lift</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium">Model</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">Precision</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">Recall</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">F1-Score</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">Mean IoU</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700 font-mono">
-                  <tr className="hover:bg-space-700/50 transition-colors">
-                    <td className="px-6 py-4 text-slate-300">Precision</td>
-                    <td className="px-6 py-4 text-slate-500">0.72%</td>
-                    <td className="px-6 py-4 font-bold text-white bg-brand-DEFAULT/5">72.27%</td>
-                    <td className="px-6 py-4 text-green-400">+71.55%</td>
+                <tbody className="divide-y divide-slate-800 font-mono">
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">GeoChat</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">6.81%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">8.87%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">7.70%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">14.84%</td>
                   </tr>
-                  <tr className="hover:bg-space-700/50 transition-colors">
-                    <td className="px-6 py-4 text-slate-300">Recall</td>
-                    <td className="px-6 py-4 text-slate-500">0.02%</td>
-                    <td className="px-6 py-4 font-bold text-white bg-brand-DEFAULT/5">59.88%</td>
-                    <td className="px-6 py-4 text-green-400">+59.86%</td>
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">TEOChat</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">23.70%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">5.70%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">9.19%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">17.70%</td>
                   </tr>
-                  <tr className="hover:bg-space-700/50 transition-colors">
-                    <td className="px-6 py-4 text-slate-300">F1 Score</td>
-                    <td className="px-6 py-4 text-slate-500">0.03%</td>
-                    <td className="px-6 py-4 font-bold text-white bg-brand-DEFAULT/5">65.49%</td>
-                    <td className="px-6 py-4 text-green-400">+65.46%</td>
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">Qwen3-VL-8B</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">11.76%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">36.91%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">17.83%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">24.51%</td>
                   </tr>
-                  <tr className="hover:bg-space-700/50 transition-colors">
-                    <td className="px-6 py-4 text-slate-300">Mean IoU</td>
-                    <td className="px-6 py-4 text-slate-500">50.35%</td>
-                    <td className="px-6 py-4 font-bold text-white bg-brand-DEFAULT/5">79.02%</td>
-                    <td className="px-6 py-4 text-green-400">+28.67%</td>
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">Qwen3-VL-32B</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">36.72%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">66.38%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">47.29%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">45.02%</td>
+                  </tr>
+                  <tr className="bg-brand-DEFAULT/5 hover:bg-brand-DEFAULT/10 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 font-semibold text-brand-DEFAULT">TerraSense</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">78.51%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">67.26%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">72.45%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">69.77%</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-slate-500 mt-4 italic">
-              *Table 1: Quantitative comparison on standard remote sensing change detection and segmentation benchmarks.
-            </p>
+          </div>
+
+          {/* Right: Oriented bounding box detection */}
+          <div className="bg-space-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+            <div className="px-5 pt-4 pb-3 border-b border-slate-700">
+              <div className="text-xs font-mono uppercase tracking-wide text-brand-DEFAULT">TS-Instruct – Oriented Detection</div>
+              <p className="text-xs text-slate-400 mt-1">
+                Result of baseline models on oriented object detection. General VLMs struggle to produce meaningful rotated boxes.
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-xs md:text-sm text-left">
+                <thead className="bg-space-900 text-[11px] md:text-xs text-slate-400 uppercase border-b border-slate-700">
+                  <tr>
+                    <th className="px-4 md:px-5 py-2.5 font-medium">Model</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">Precision</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">Recall</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">F1-Score</th>
+                    <th className="px-4 md:px-5 py-2.5 font-medium text-right">Mean IoU</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800 font-mono">
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">GeoChat</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.48%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.55%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.51%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.65%</td>
+                  </tr>
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">TEOChat</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">2.31%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">1.68%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">1.94%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">5.73%</td>
+                  </tr>
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">Qwen3-VL-8B</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.08%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.04%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.06%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.07%</td>
+                  </tr>
+                  <tr className="hover:bg-space-900/60 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 text-slate-300">Qwen3-VL-32B</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.55%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.17%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.26%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right text-slate-300">0.34%</td>
+                  </tr>
+                  <tr className="bg-brand-DEFAULT/5 hover:bg-brand-DEFAULT/10 transition-colors">
+                    <td className="px-4 md:px-5 py-2.5 font-semibold text-brand-DEFAULT">TerraSense</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">72.27%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">59.88%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">65.49%</td>
+                    <td className="px-4 md:px-5 py-2.5 text-right font-semibold text-white">79.02%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
@@ -196,9 +247,9 @@ export const ModelShowcase: React.FC = () => {
             {/* Left: Context Image */}
             <div className="w-full md:w-1/2 bg-black relative border-r border-slate-800">
               <img 
-                src="https://images.unsplash.com/photo-1577127450933-429297a7b58a?q=80&w=800&auto=format&fit=crop" 
-                alt="Context" 
-                className="w-full h-full object-cover opacity-60"
+                src={ContextSample} 
+                alt="TerraSense detection context" 
+                className="w-full h-full object-cover opacity-70"
               />
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                  <div className="w-3/4 h-3/4 border border-dashed border-white/30 rounded-lg relative">

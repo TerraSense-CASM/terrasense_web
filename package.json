@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://hua7856.github.io/terrasense",
+  "homepage": "https://terrasense-casm.github.io/terrasense",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

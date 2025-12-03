@@ -55,7 +55,7 @@ export const InteractiveDemo: React.FC = () => {
   const runAnalysis = async () => {
     if (!selectedImage) return;
     if (!apiKey) {
-      alert("Please enter a Gemini API Key to test the live demo.");
+      alert("Please enter a Gemini API Key (see env.example) to test the TerraSense demo.");
       return;
     }
 
@@ -98,10 +98,10 @@ export const InteractiveDemo: React.FC = () => {
           <div className="inline-block p-2 rounded-full bg-brand-accent/10 text-brand-accent mb-4">
             <Icons.Eye className="w-6 h-6" />
           </div>
-          <h2 className="text-4xl font-bold mb-4">Live Capability Demo</h2>
+          <h2 className="text-4xl font-bold mb-4">Live Remote Sensing Demo</h2>
           <p className="text-slate-400">
-            Experience the reasoning power of TerraSense. <br/>
-            <span className="text-xs text-slate-500">*Powered by Gemini 2.5 Flash simulating TerraSense-Base behavior</span>
+            Upload or select satellite imagery and obtain a TerraSense-style technical analysis of land cover, man-made structures, and notable changes. <br/>
+            <span className="text-xs text-slate-500">*This web demo uses Gemini 2.5 Flash to approximate TerraSense-Base; for official usage, follow the Python / vLLM Quick Start above.</span>
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export const InteractiveDemo: React.FC = () => {
             {/* API Key Input (For Demo Purposes) */}
             {!process.env.API_KEY && (
                <div className="bg-space-800 p-4 rounded-xl border border-slate-700">
-                 <label className="block text-xs font-mono text-slate-400 mb-2">ENTER_API_KEY_FOR_ACCESS</label>
+                 <label className="block text-xs font-mono text-slate-400 mb-2">GEMINI_API_KEY (demo only)</label>
                  <input 
                     type="password" 
                     placeholder="Gemini API Key"

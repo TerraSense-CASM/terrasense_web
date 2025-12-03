@@ -32,7 +32,7 @@ export const Hero: React.FC = () => {
         </h1>
         
         <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-          Introducing <span className="font-semibold text-white">TerraSense</span>, a specialized MLLM for intelligent remote sensing. Experience an <span className="text-brand-DEFAULT font-semibold">"All-In-One"</span> understanding paradigm where <span className="text-cyan-300 font-semibold">natural language</span> defines the task and drives discovery.
+          <span className="font-semibold text-white">TerraSense</span> is an <span className="font-semibold text-white">All-In-One remote sensing MLLM</span> that unifies detection, captioning, VQA, and change captioning in a single model. Trained on <span className="text-brand-DEFAULT font-semibold">300k+ expert-verified TS-Instruct examples</span> across <span className="text-cyan-300 font-semibold">21 public remote sensing datasets</span>, it brings geospatial intelligence to overhead imagery.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -51,9 +51,7 @@ export const Hero: React.FC = () => {
       {/* Decorative Tech Elements */}
       <div className="absolute bottom-10 left-10 hidden lg:block font-mono text-xs text-slate-600">
         <div className="flex flex-col gap-1">
-          <span>MODEL: TERRASENSE-8B</span>
-          <span>DATASET: 5PB MULTI-SPECTRAL</span>
-          <span>STATUS: RESEARCH_PREVIEW</span>
+          
         </div>
       </div>
     </section>

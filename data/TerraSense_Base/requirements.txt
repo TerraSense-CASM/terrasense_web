@@ -1,0 +1,20 @@
+# TerraSense Inference & Deployment Requirements
+# Core dependencies for vLLM serving and transformers inference
+
+# Core inference engine
+vllm>=0.11.0
+
+# Model loading & tokenizer
+transformers>=4.51.0
+
+# Qwen-VL utils (multi-modal input processing)
+qwen-vl-utils>=0.0.10
+
+# Deep learning framework
+torch>=2.5.1
+
+# Image processing
+pillow>=10.0.0
+
+# API client (optional, for testing OpenAI-compatible API)
+openai>=1.0.0
