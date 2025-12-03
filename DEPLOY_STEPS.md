@@ -32,8 +32,8 @@ git remote -v
 
 **预期输出**应该显示：
 ```
-origin  https://github.com/QinghuaZhang1/hua.git (fetch)
-origin  https://github.com/QinghuaZhang1/hua.git (push)
+origin  https://github.com/QinghuaZhang1/terrasense.git (fetch)
+origin  https://github.com/QinghuaZhang1/terrasense.git (push)
 ```
 
 如果显示 `error: remote origin already exists`，说明已经配置好了，可以跳过步骤 3。
@@ -47,7 +47,7 @@ origin  https://github.com/QinghuaZhang1/hua.git (push)
 git remote remove origin
 
 # 添加正确的远程仓库
-git remote add origin https://github.com/QinghuaZhang1/hua.git
+git remote add origin https://github.com/QinghuaZhang1/terrasense.git
 
 # 验证配置
 git remote -v

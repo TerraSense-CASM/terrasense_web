@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://qinghuazhang1.github.io/hua",
+  "homepage": "https://qinghuazhang1.github.io/terrasense",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
