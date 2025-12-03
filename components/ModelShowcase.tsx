@@ -110,14 +110,14 @@ export const ModelShowcase: React.FC = () => {
           <div className="inline-block p-2 rounded-full bg-brand-accent/10 text-brand-accent mb-4">
             <Icons.Layers className="w-6 h-6" />
           </div>
-          <h2 className="text-4xl font-bold mb-4">TerraSense Capabilities & Example</h2>
+          <h2 className="text-4xl font-bold mb-4">TerraSense Capabilities & Benchmarks</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
             Showcasing <span className="font-semibold text-white">TerraSense-Base</span> on representative remote sensing tasks, including object detection, land-cover segmentation, scene classification, VQA, and bi-temporal change detection.
           </p>
         </div>
 
         {/* FEATURE 1: TS-Instruct DETECTION TABLES */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24" id="Example">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24" id="benchmarks">
           {/* Left: 2D bounding box detection */}
           <div className="bg-space-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
             <div className="px-5 pt-4 pb-3 border-b border-slate-700">
