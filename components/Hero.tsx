@@ -16,19 +16,23 @@ export const Hero: React.FC = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-DEFAULT/10 border border-brand-DEFAULT/20 text-brand-DEFAULT text-xs font-mono mb-6 animate-float">
           <span className="w-2 h-2 rounded-full bg-brand-DEFAULT animate-pulse"></span>
-          TerraSense-Base 8B: The Remote Sensing Foundation Model
+          New Release: TerraSense Base 8B MLLM
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-500">
-          Global Vision for <br />
-          <span className="text-white">Planetary Agents.</span>
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-white">
+          <span className="block">
+            Talk to the Planet:
+          </span>
+          <span className="block mt-3">
+            Autonomous Insights
+          </span>
+          <span className="block mt-3">
+            Driven by Vision-Language Intelligence
+          </span>
         </h1>
         
-        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          An 8-billion parameter multimodal model designed for 
-          <span className="text-brand-glow"> complex reasoning</span>, 
-          <span className="text-brand-glow"> multi-turn dialogue</span>, and 
-          <span className="text-brand-glow"> fine-grained perception</span> in remote sensing.
+        <p className="text-lg md:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+          Introducing <span className="font-semibold text-white">TerraSense</span>, a specialized MLLM for intelligent remote sensing. Experience an <span className="text-brand-DEFAULT font-semibold">"All-In-One"</span> understanding paradigm where <span className="text-cyan-300 font-semibold">natural language</span> defines the task and drives discovery.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
