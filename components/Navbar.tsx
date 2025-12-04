@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         <a 
-          href="https://github.com/TerraSense-CASM/terrasense1" 
+          href="https://github.com/TerraSense-CASM/terrasense" 
           target="_blank"
           rel="noreferrer"
           className="hidden md:flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-full text-sm transition-all border border-slate-700 hover:border-brand-DEFAULT/50"
