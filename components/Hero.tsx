@@ -36,7 +36,7 @@ export const Hero: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="https://github.com/TerraSense-CASM/terrasense1" target="_blank" rel="noreferrer" className="w-full sm:w-auto px-8 py-4 bg-brand-DEFAULT hover:bg-brand-400 text-space-900 font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] flex items-center justify-center gap-2 group">
+          <a href="https://github.com/TerraSense-CASM/terrasense" target="_blank" rel="noreferrer" className="w-full sm:w-auto px-8 py-4 bg-brand-DEFAULT hover:bg-brand-400 text-space-900 font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(56,189,248,0.3)] flex items-center justify-center gap-2 group">
             <Icons.Github className="w-4 h-4" />
             View on GitHub
             <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
